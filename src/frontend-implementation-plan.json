@@ -1,0 +1,257 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Jubaan Hit Masala storefront (public catalog, cart/checkout, order tracking, admin via Internet Identity)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Public homepage for Jubaan Hit Masala with brand highlight, featured products, and navigation to browse, cart, and order tracking (English-only UI).",
+      "acceptanceCriteria": [
+        "The app has a public landing/home page that clearly displays the brand name \"Jubaan Hit Masala\".",
+        "Users can navigate from the homepage to browse products and view the cart.",
+        "All visible UI strings are in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell with routing and a shared layout (header/nav) that links to Home, Browse Products, Cart, and Track Order. Ensure all labels are English."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Implement the homepage featuring the brand name, hero section, key actions (Browse Products, View Cart, Track Order), and a featured products section fed from catalog queries."
+        },
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "create",
+          "description": "Add a consistent public layout (header, footer, primary navigation) used across storefront pages; include a cart link with item count."
+        },
+        {
+          "path": "frontend/public/assets/generated/jubaan-hit-masala-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add generated brand logo asset at frontend/public/assets/generated/jubaan-hit-masala-logo.dim_512x512.png and wire it into the header/homepage branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/jubaan-hit-masala-hero.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add generated hero banner asset at frontend/public/assets/generated/jubaan-hit-masala-hero.dim_1600x600.png and wire it into the homepage hero section."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Catalog browsing with category list, product list (by category), and product detail pages showing name, price, description, and optional image.",
+      "acceptanceCriteria": [
+        "Backend exposes query methods to list categories and list products (optionally filtered by category) and fetch a product by id.",
+        "Frontend provides pages/views for categories, product list, and product details.",
+        "A product has at minimum: id, name, categoryId, price, description, and imageUrl (optional)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/catalogHooks.ts",
+          "operation": "create",
+          "description": "Create React Query hooks that call the backend actor to load categories, all products, products by category, and a single product; handle loading/empty/error states."
+        },
+        {
+          "path": "frontend/src/pages/CategoriesPage.tsx",
+          "operation": "create",
+          "description": "Create a category listing page that displays available categories and navigates into the product list for a selected category."
+        },
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "create",
+          "description": "Create a product listing page supporting optional category filtering via route params; render product cards with name, INR price display, and optional image."
+        },
+        {
+          "path": "frontend/src/pages/ProductDetailPage.tsx",
+          "operation": "create",
+          "description": "Create a product detail page showing name, description, price (INR display), optional image, stock status, and an Add to Cart action."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Build a reusable product card component for product listing/featured sections; use shadcn-ui components (e.g., Card/Button) by composition only. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire new catalog routes into the router (categories, products, product detail) and ensure navigation exists from the layout/homepage."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Cart and checkout flow: add/remove items, adjust quantities, show totals, collect customer details, place order, and show order confirmation with order id.",
+      "acceptanceCriteria": [
+        "Users can add items to cart from product list/detail and modify quantities in the cart.",
+        "Checkout form collects name, phone, address, city, state, and PIN code.",
+        "Placing an order creates an order record in the backend and returns an order id to the frontend.",
+        "Frontend shows an order confirmation view with the order id and summary."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/state/cartStore.ts",
+          "operation": "create",
+          "description": "Implement a cart state layer (React context + reducer or equivalent) with localStorage persistence: add/remove/update quantity, clear, and derived totals."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "create",
+          "description": "Create cart page UI: list items, quantity controls, remove actions, and subtotal/total; provide a clear Call To Action to proceed to checkout."
+        },
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "create",
+          "description": "Create checkout form collecting name, phone, address, city, state, and PIN code; validate required fields; show an order summary and submit to place order."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmationPage.tsx",
+          "operation": "create",
+          "description": "Create confirmation view displayed after successful order placement; show returned order id and an items/totals summary, plus link to Track Order."
+        },
+        {
+          "path": "frontend/src/hooks/orderHooks.ts",
+          "operation": "create",
+          "description": "Add React Query mutations for placing orders and queries to fetch order details needed for confirmation summaries (where appropriate)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire cart, checkout, and order confirmation routes; ensure Add to Cart actions route users appropriately and cart state is available app-wide."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Payment method selection in checkout supporting Cash on Delivery and Manual UPI (UTR/reference input) with clear payment status messaging in customer/admin views.",
+      "acceptanceCriteria": [
+        "Checkout includes a payment method selector with at least: Cash on Delivery, UPI (Manual).",
+        "If UPI (Manual) is selected, the UI collects a payment reference/UTR field (English label).",
+        "Order records store paymentMethod and paymentStatus (e.g., Pending, Paid, Failed/Cancelled).",
+        "Backend provides an authenticated/admin-only update method to set paymentStatus for an order (e.g., mark paid/confirmed)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PaymentMethodSelector.tsx",
+          "operation": "create",
+          "description": "Create a checkout payment selector UI supporting Cash on Delivery and Manual UPI; when UPI is chosen, collect UTR/Payment Reference and show a clear instruction note. Use shadcn-ui form inputs/radio controls by composition only. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "modify",
+          "description": "Integrate PaymentMethodSelector into checkout; map selection into the backend PaymentMethod type and include UTR/reference as part of the manual UPI flow (front-end capture + submit in the order payload where supported)."
+        },
+        {
+          "path": "frontend/src/components/OrderStatusBadge.tsx",
+          "operation": "create",
+          "description": "Add a small reusable badge component to display order/payment status consistently (e.g., Pending/Paid/Failed) across confirmation, tracking, and admin views; use shadcn-ui Badge by composition only. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Order tracking page where customers enter order id + phone number to view order/payment status and items summary.",
+      "acceptanceCriteria": [
+        "Frontend includes a \"Track Order\" page where a user enters order id and phone number.",
+        "Backend provides a query method that returns order details only when order id + phone number match.",
+        "Returned order details include status, paymentStatus, items, and totals."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TrackOrderPage.tsx",
+          "operation": "create",
+          "description": "Implement Track Order page with a form for order id and phone number; on submit, call backend tracking and render status/payment status and items/totals summary (English-only labels)."
+        },
+        {
+          "path": "frontend/src/hooks/orderHooks.ts",
+          "operation": "modify",
+          "description": "Add a React Query hook for order tracking by orderId + phone number; include graceful handling for not found / mismatch cases."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the Track Order route and ensure it is reachable from the homepage and layout navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Admin interface protected by Internet Identity: manage categories/products and view/update orders including order status/payment status.",
+      "acceptanceCriteria": [
+        "There is an admin route/view that requires Internet Identity authentication.",
+        "Admin can create/edit/delete categories and products (or at minimum create/edit).",
+        "Admin can view a list of orders and open an order to update order status and payment status.",
+        "Non-authenticated users cannot access admin functions."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/admin/AdminGate.tsx",
+          "operation": "create",
+          "description": "Create an admin-only route guard that uses the authorization component pattern: Internet Identity login + backend role checks (e.g., isCallerAdmin/getCallerUserRole) and shows an access denied screen when unauthorized. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/LoginButton.tsx",
+          "operation": "create",
+          "description": "Add a reusable Login/Logout button for Internet Identity using the authorization component guidance (clear cached queries on logout). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Implement first-login admin profile setup (collect admin name) using getCallerUserProfile/saveCallerUserProfile per authorization component guidance to avoid modal flash. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminDashboardPage.tsx",
+          "operation": "create",
+          "description": "Create the admin dashboard shell with navigation to Catalog and Orders management sections; display the logged-in admin name (from user profile) rather than principal."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminCatalogPage.tsx",
+          "operation": "create",
+          "description": "Implement admin catalog management UI for categories/products (create/edit at minimum) using backend calls; use shadcn-ui forms/tables/dialogs by composition only. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminOrdersPage.tsx",
+          "operation": "create",
+          "description": "Implement admin orders list + order detail panel to update payment status (and order status if available through backend capabilities) using backend calls; use shadcn-ui components by composition only. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/adminHooks.ts",
+          "operation": "create",
+          "description": "Add React Query hooks for admin operations (catalog mutations, orders list, order updates) with authorization-error handling suitable for protected routes."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add an /admin route wired through AdminGate and register nested admin pages (dashboard/catalog/orders). Ensure non-admins cannot access admin pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply a coherent Jubaan Hit Masala theme across the app (non-blue/purple primary palette) with consistent component styling.",
+      "acceptanceCriteria": [
+        "App uses a consistent theme across homepage, catalog, cart, checkout, and tracking pages.",
+        "Primary brand colors are not blue/purple.",
+        "UI components are consistently styled (buttons, cards, forms, headings)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global theme tokens and base styles (typography, spacing, component defaults) using a warm spice palette (e.g., saffron/masala reds/browns) and ensure primary is not blue/purple."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (if needed) to support the warm brand palette and consistent UI styling across pages while keeping shadcn-ui token approach intact."
+        },
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Apply consistent themed styling to header/nav/footer and shared elements (buttons/links/headings) using utility classes and shadcn-ui components by composition only. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

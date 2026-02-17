@@ -1,0 +1,158 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-public-storefront-for-the-brand-name-jubaan-hit-masala-with-a-homepage-that-highlights-the-brand-featured-products-and-key-actions-browse-products-view-cart-track-order-all-user-facing-text-must-be-in-english",
+      "featureTitle": "Create a public storefront for the brand name \"Jubaan Hit Masala\" with a homepage that highlights the brand, featured products, and key actions (Browse Products, View Cart, Track Order). All user-facing text must be in English.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-product-catalog-browsing-with-categories-for-food-masala-items-including-category-listing-product-listing-and-product-detail-pages-showing-name-price-description-and-optional-image",
+      "featureTitle": "Implement product catalog browsing with categories for food/masala items, including category listing, product listing, and product detail pages showing name, price, description, and optional image.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/pages/CategoriesPage.tsx",
+        "frontend/src/pages/ProductDetailPage.tsx",
+        "frontend/src/pages/ProductsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-cart-and-checkout-flow-users-can-add-remove-items-adjust-quantities-see-order-totals-and-place-an-order-with-customer-details-name-phone-delivery-address-city-state-pin-code",
+      "featureTitle": "Add cart and checkout flow: users can add/remove items, adjust quantities, see order totals, and place an order with customer details (name, phone, delivery address, city, state, PIN code).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CartPage.tsx",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/OrderConfirmationPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-payment-selection-and-order-payment-status-model-that-supports-at-least-cash-on-delivery-and-manual-upi-payment-user-submits-a-payment-reference-utr-include-a-clear-admin-only-method-backend-to-mark-an-order-as-paid-confirmed-without-relying-on-third-party-payment-processors",
+      "featureTitle": "Implement a payment selection and order payment status model that supports at least: Cash on Delivery and Manual UPI payment (user submits a payment reference/UTR). Include a clear admin-only method (backend) to mark an order as Paid/Confirmed without relying on third-party payment processors.",
+      "files": [
+        "frontend/src/components/OrderStatusBadge.tsx",
+        "frontend/src/components/PaymentMethodSelector.tsx",
+        "frontend/src/pages/CheckoutPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-order-lookup-tracking-for-customers-using-an-order-id-and-phone-number-to-view-order-status-payment-status-and-items-summary-no-real-time-updates-required",
+      "featureTitle": "Add order lookup/tracking for customers using an order id and phone number to view order status, payment status, and items summary (no real-time updates required).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/TrackOrderPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-minimal-admin-interface-protected-by-internet-identity-login-to-manage-catalog-and-orders-create-edit-categories-and-products-view-orders-list-and-update-order-status-payment-status",
+      "featureTitle": "Provide a minimal admin interface protected by Internet Identity login to manage catalog and orders: create/edit categories and products, view orders list, and update order status/payment status.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/admin/AdminGate.tsx",
+        "frontend/src/components/auth/LoginButton.tsx",
+        "frontend/src/components/auth/ProfileSetupModal.tsx",
+        "frontend/src/pages/admin/AdminCatalogPage.tsx",
+        "frontend/src/pages/admin/AdminDashboardPage.tsx",
+        "frontend/src/pages/admin/AdminOrdersPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-define-a-coherent-visual-theme-for-the-jubaan-hit-masala-brand-ui-colors-typography-spacing-components-and-apply-it-consistently-across-pages-do-not-use-a-blue-purple-primary-palette",
+      "featureTitle": "Define a coherent visual theme for the \"Jubaan Hit Masala\" brand UI (colors, typography, spacing, components) and apply it consistently across pages. Do not use a blue/purple primary palette.",
+      "files": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

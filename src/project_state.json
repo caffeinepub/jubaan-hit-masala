@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a public, India-wide online store app for the food/masala brand \"Jubaan Hit Masala\", with product categories, ordering, and payments.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Brand logo with a bold, traditional Indian spice aesthetic (jubaan-hit-masala-logo.dim_512x512.png)\n- Homepage hero banner with spices/masala imagery and warm tones (jubaan-hit-masala-hero.dim_1600x600.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-public-storefront-for-the-brand-name-jubaan-hit-masala-with-a-homepage-that-highlights-the-brand-featured-products-and-key-actions-browse-products-view-cart-track-order-all-user-facing-text-must-be-in-english",
+      "title": "Create a public storefront for the brand name \"Jubaan Hit Masala\" with a homepage that highlights the brand, featured products, and key actions (Browse Products, View Cart, Track Order). All user-facing text must be in English.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-product-catalog-browsing-with-categories-for-food-masala-items-including-category-listing-product-listing-and-product-detail-pages-showing-name-price-description-and-optional-image",
+      "title": "Implement product catalog browsing with categories for food/masala items, including category listing, product listing, and product detail pages showing name, price, description, and optional image.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-cart-and-checkout-flow-users-can-add-remove-items-adjust-quantities-see-order-totals-and-place-an-order-with-customer-details-name-phone-delivery-address-city-state-pin-code",
+      "title": "Add cart and checkout flow: users can add/remove items, adjust quantities, see order totals, and place an order with customer details (name, phone, delivery address, city, state, PIN code).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-payment-selection-and-order-payment-status-model-that-supports-at-least-cash-on-delivery-and-manual-upi-payment-user-submits-a-payment-reference-utr-include-a-clear-admin-only-method-backend-to-mark-an-order-as-paid-confirmed-without-relying-on-third-party-payment-processors",
+      "title": "Implement a payment selection and order payment status model that supports at least: Cash on Delivery and Manual UPI payment (user submits a payment reference/UTR). Include a clear admin-only method (backend) to mark an order as Paid/Confirmed without relying on third-party payment processors.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-order-lookup-tracking-for-customers-using-an-order-id-and-phone-number-to-view-order-status-payment-status-and-items-summary-no-real-time-updates-required",
+      "title": "Add order lookup/tracking for customers using an order id and phone number to view order status, payment status, and items summary (no real-time updates required).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-minimal-admin-interface-protected-by-internet-identity-login-to-manage-catalog-and-orders-create-edit-categories-and-products-view-orders-list-and-update-order-status-payment-status",
+      "title": "Provide a minimal admin interface protected by Internet Identity login to manage catalog and orders: create/edit categories and products, view orders list, and update order status/payment status.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-define-a-coherent-visual-theme-for-the-jubaan-hit-masala-brand-ui-colors-typography-spacing-components-and-apply-it-consistently-across-pages-do-not-use-a-blue-purple-primary-palette",
+      "title": "Define a coherent visual theme for the \"Jubaan Hit Masala\" brand UI (colors, typography, spacing, components) and apply it consistently across pages. Do not use a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a public e-commerce app for the \"Jubaan Hit Masala\" brand featuring food/masala categories, online ordering, and payment support for customers across India.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Seed the app with initial demo data for an India-wide masala/food store (several categories and several products per category) so the storefront is usable immediately after deployment.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Jubaan Hit Masala",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

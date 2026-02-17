@@ -1,0 +1,271 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T13:10:31.737Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 8,
+    "implemented": 7,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a public storefront for the brand name \"Jubaan Hit Masala\" with a homepage that highlights the brand, featured products, and key actions (Browse Products, View Cart, Track Order). All user-facing text must be in English.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/public/assets/generated/jubaan-hit-masala-logo.dim_512x512.png",
+          "frontend/public/assets/generated/jubaan-hit-masala-hero.dim_1600x600.png"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/public/assets/generated/jubaan-hit-masala-logo.dim_512x512.png",
+          "frontend/public/assets/generated/jubaan-hit-masala-hero.dim_1600x600.png"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement product catalog browsing with categories for food/masala items, including category listing, product listing, and product detail pages showing name, price, description, and optional image.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/catalogHooks.ts",
+          "frontend/src/pages/CategoriesPage.tsx",
+          "frontend/src/pages/ProductsPage.tsx",
+          "frontend/src/pages/ProductDetailPage.tsx",
+          "frontend/src/components/ProductCard.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/CategoriesPage.tsx",
+          "frontend/src/pages/ProductsPage.tsx",
+          "frontend/src/pages/ProductDetailPage.tsx",
+          "frontend/src/components/ProductCard.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add cart and checkout flow: users can add/remove items, adjust quantities, see order totals, and place an order with customer details (name, phone, delivery address, city, state, PIN code).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/state/cartStore.ts",
+          "frontend/src/pages/CartPage.tsx",
+          "frontend/src/pages/CheckoutPage.tsx",
+          "frontend/src/pages/OrderConfirmationPage.tsx",
+          "frontend/src/hooks/orderHooks.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/CartPage.tsx",
+          "frontend/src/pages/CheckoutPage.tsx",
+          "frontend/src/pages/OrderConfirmationPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement a payment selection and order payment status model that supports at least: Cash on Delivery and Manual UPI payment (user submits a payment reference/UTR). Include a clear admin-only method (backend) to mark an order as Paid/Confirmed without relying on third-party payment processors.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PaymentMethodSelector.tsx",
+          "frontend/src/pages/CheckoutPage.tsx",
+          "frontend/src/components/OrderStatusBadge.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PaymentMethodSelector.tsx",
+          "frontend/src/pages/CheckoutPage.tsx",
+          "frontend/src/components/OrderStatusBadge.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add order lookup/tracking for customers using an order id and phone number to view order status, payment status, and items summary (no real-time updates required).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/TrackOrderPage.tsx",
+          "frontend/src/hooks/orderHooks.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/TrackOrderPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Provide a minimal admin interface protected by Internet Identity login to manage catalog and orders: create/edit categories and products, view orders list, and update order status/payment status.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/admin/AdminGate.tsx",
+          "frontend/src/components/auth/LoginButton.tsx",
+          "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "frontend/src/pages/admin/AdminDashboardPage.tsx",
+          "frontend/src/pages/admin/AdminCatalogPage.tsx",
+          "frontend/src/pages/admin/AdminOrdersPage.tsx",
+          "frontend/src/hooks/adminHooks.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/admin/AdminGate.tsx",
+          "frontend/src/components/auth/LoginButton.tsx",
+          "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "frontend/src/pages/admin/AdminDashboardPage.tsx",
+          "frontend/src/pages/admin/AdminCatalogPage.tsx",
+          "frontend/src/pages/admin/AdminOrdersPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Define a coherent visual theme for the \"Jubaan Hit Masala\" brand UI (colors, typography, spacing, components) and apply it consistently across pages. Do not use a blue/purple primary palette.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/AppLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/AppLayout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Seed the app with initial demo data for an India-wide masala/food store (several categories and several products per category) so the storefront is usable immediately after deployment.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/authorization/MixinAuthorization.mo",
+    "backend/authorization/access-control.mo",
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/jubaan-hit-masala-hero.dim_1600x600.png",
+    "frontend/public/assets/generated/jubaan-hit-masala-logo.dim_512x512.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/OrderStatusBadge.tsx",
+    "frontend/src/components/PaymentMethodSelector.tsx",
+    "frontend/src/components/ProductCard.tsx",
+    "frontend/src/components/admin/AdminGate.tsx",
+    "frontend/src/components/auth/LoginButton.tsx",
+    "frontend/src/components/auth/ProfileSetupModal.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CartPage.tsx",
+    "frontend/src/pages/CategoriesPage.tsx",
+    "frontend/src/pages/CheckoutPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/OrderConfirmationPage.tsx",
+    "frontend/src/pages/ProductDetailPage.tsx",
+    "frontend/src/pages/ProductsPage.tsx",
+    "frontend/src/pages/TrackOrderPage.tsx",
+    "frontend/src/pages/admin/AdminCatalogPage.tsx",
+    "frontend/src/pages/admin/AdminDashboardPage.tsx",
+    "frontend/src/pages/admin/AdminOrdersPage.tsx",
+    "frontend/src/state/cartStore.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

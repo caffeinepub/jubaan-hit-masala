@@ -1,0 +1,170 @@
+{
+  "kind": "build_request",
+  "title": "Jubaan Hit Masala public online store (India) with categories, orders, and payments",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a public storefront for the brand name \"Jubaan Hit Masala\" with a homepage that highlights the brand, featured products, and key actions (Browse Products, View Cart, Track Order). All user-facing text must be in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Category food category masala brand name jubaan hit masala app  Sona level payment order online store all India publis app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app has a public landing/home page that clearly displays the brand name \"Jubaan Hit Masala\".",
+        "Users can navigate from the homepage to browse products and view the cart.",
+        "All visible UI strings are in English."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement product catalog browsing with categories for food/masala items, including category listing, product listing, and product detail pages showing name, price, description, and optional image.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Category food category masala brand name jubaan hit masala app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes query methods to list categories and list products (optionally filtered by category) and fetch a product by id.",
+        "Frontend provides pages/views for categories, product list, and product details.",
+        "A product has at minimum: id, name, categoryId, price, description, and imageUrl (optional)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add cart and checkout flow: users can add/remove items, adjust quantities, see order totals, and place an order with customer details (name, phone, delivery address, city, state, PIN code).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "payment order online store all India publis app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add items to cart from product list/detail and modify quantities in the cart.",
+        "Checkout form collects name, phone, address, city, state, and PIN code.",
+        "Placing an order creates an order record in the backend and returns an order id to the frontend.",
+        "Frontend shows an order confirmation view with the order id and summary."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement a payment selection and order payment status model that supports at least: Cash on Delivery and Manual UPI payment (user submits a payment reference/UTR). Include a clear admin-only method (backend) to mark an order as Paid/Confirmed without relying on third-party payment processors.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Sona level payment order online store"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout includes a payment method selector with at least: Cash on Delivery, UPI (Manual).",
+        "If UPI (Manual) is selected, the UI collects a payment reference/UTR field (English label).",
+        "Order records store paymentMethod and paymentStatus (e.g., Pending, Paid, Failed/Cancelled).",
+        "Backend provides an authenticated/admin-only update method to set paymentStatus for an order (e.g., mark paid/confirmed)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add order lookup/tracking for customers using an order id and phone number to view order status, payment status, and items summary (no real-time updates required).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "order online store all India publis app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend includes a \"Track Order\" page where a user enters order id and phone number.",
+        "Backend provides a query method that returns order details only when order id + phone number match.",
+        "Returned order details include status, paymentStatus, items, and totals."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Provide a minimal admin interface protected by Internet Identity login to manage catalog and orders: create/edit categories and products, view orders list, and update order status/payment status.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "online store all India publis app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is an admin route/view that requires Internet Identity authentication.",
+        "Admin can create/edit/delete categories and products (or at minimum create/edit).",
+        "Admin can view a list of orders and open an order to update order status and payment status.",
+        "Non-authenticated users cannot access admin functions."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Define a coherent visual theme for the \"Jubaan Hit Masala\" brand UI (colors, typography, spacing, components) and apply it consistently across pages. Do not use a blue/purple primary palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "jubaan hit masala app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App uses a consistent theme across homepage, catalog, cart, checkout, and tracking pages.",
+        "Primary brand colors are not blue/purple.",
+        "UI components are consistently styled (buttons, cards, forms, headings)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Seed the app with initial demo data for an India-wide masala/food store (several categories and several products per category) so the storefront is usable immediately after deployment.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Category food category masala ... all India publis app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After deployment, the catalog displays multiple categories and products without requiring admin setup.",
+        "Seed data includes realistic product names, descriptions, and prices (in INR as display currency)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "Do not modify files under frontend/src/components/ui or other immutable paths listed in SYSTEM_CONTEXT; compose them instead.",
+    "Use English for any user-facing text in the app."
+  ],
+  "nonGoals": [
+    "Integration with third-party payment gateways or automatic payment verification.",
+    "Real-time order updates, chat, push notifications, or email/SMS notifications.",
+    "Advanced shipping rate calculations, courier integrations, or GPS/map features."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Brand logo with a bold, traditional Indian spice aesthetic (jubaan-hit-masala-logo.dim_512x512.png)",
+      "Homepage hero banner with spices/masala imagery and warm tones (jubaan-hit-masala-hero.dim_1600x600.png)"
+    ],
+    "edits": []
+  }
+}
